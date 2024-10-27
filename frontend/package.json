@@ -1,0 +1,37 @@
+{
+  "name": "guest-book",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@near-wallet-selector/bitte-wallet": "^8.9.12",
+    "@near-wallet-selector/core": "^8.9.11",
+    "@near-wallet-selector/here-wallet": "^8.9.11",
+    "@near-wallet-selector/meteor-wallet": "^8.9.12",
+    "@near-wallet-selector/mintbase-wallet": "^8.9.12",
+    "@near-wallet-selector/modal-ui": "^8.9.11",
+    "@near-wallet-selector/my-near-wallet": "^8.9.11",
+    "bootstrap": "^5",
+    "bootstrap-icons": "^1.11.3",
+    "near-api-js": "^4.0.3",
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "resolutions": {
+    "near-api-js": "4.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3"
+  }
+}
