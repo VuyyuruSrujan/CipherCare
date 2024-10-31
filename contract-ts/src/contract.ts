@@ -1,13 +1,16 @@
 import { NearBindgen, near, call, view, Vector } from 'near-sdk-js'
-import {PostedMessage , Doctor} from './model'
+import {PostedMessage , Doctor , DoctorRequest} from './model'
 
 @NearBindgen({})
 class GuestBook {
   messages: Vector<PostedMessage> = new Vector<PostedMessage>("v-uid");
   doctors: Vector<Doctor> = new Vector<Doctor>("d-uid");
+  DocRequests:Vector<DoctorRequest> = new Vector<DoctorRequest>("docReq-id");
+
   static schema = {
     messages: { class: Vector, value: PostedMessage },
-    doctors: { class: Vector, value: Doctor }
+    doctors: { class: Vector, value: Doctor },
+    DocRequests :{ class : Vector , value: DoctorRequest}
   }
 
   @call({ payableFunction: true })
@@ -21,9 +24,7 @@ class GuestBook {
   }
 
   @view({})
-  // Returns an array of messages with first_name, last_name, email, and dob.
   get_messages({ from_index = 0, limit = this.messages.length }: { from_index: number, limit: number }): Array<{ sender: string, first_name: string, last_name: string, email: string, dob: string , occupation:string , Age:string }> {
-    // Fetch the messages and map them to include all details
     return this.messages.toArray().slice(from_index, from_index + limit).map((message: PostedMessage) => ({
       sender: message.sender,
       first_name: message.first_name,
@@ -40,7 +41,6 @@ class GuestBook {
 
   @call({})
   delete_all_messages(): void {
-    // this.messages = new Vector<PostedMessage>("v-uid");
     this.messages.clear(); 
   }
 
@@ -63,7 +63,6 @@ class GuestBook {
         doctor_dob: doctor.doctor_dob,
         doctor_specialization: doctor.doctor_specialization
       }));
-    // Debugging output
       return doctorList;
   }
   
@@ -71,7 +70,6 @@ class GuestBook {
 
   @view({})
   get_doctor_by_sender({ senderId }: { senderId: string }): { doctor_first_name: string, doctor_last_name: string, doctor_email: string, doctor_dob: string, doctor_specialization: string } | null {
-    // Find the doctor with the matching senderId
     const doctor = this.doctors.toArray().find((doc: Doctor) => doc.sender === senderId);
     if (doctor) {
       return {
@@ -91,6 +89,26 @@ class GuestBook {
   }
 
   @view({})
-  total_doctors(): number { return this.doctors.length }
+  total_doctors(): number {return this.doctors.length}
+
+
+  @call({ payableFunction: false })
+  Doctors_Request({from , to , Note }: { from:string , to:string , Note:string , Date:string}) {
+    const New_Req = new DoctorRequest( from ,to , Note );
+    this.DocRequests.push(New_Req);
+    return New_Req;
+  }
+
+  @view({})
+  get_Requests({ from_index = 0, limit = this.DocRequests.length }) {
+    const Requests = this.DocRequests.toArray().slice(from_index, from_index + limit).map((req) => ({
+      from : req.from,
+      to: req.to,
+      Note: req.Note,
+      Date: req.Date,
+      
+    }));
+    return Requests;
+}
 
 }

@@ -85,3 +85,25 @@ export class Doctor {
     this.doctor_specialization = doctor_specialization;
   }
 }
+
+
+export class DoctorRequest {
+  static schema = {
+   'from': 'string',
+   'to': 'string',
+   'Note': 'string',
+   'Date': 'string',
+  }
+
+  from: string;
+  to: string;
+  Note: string;
+  Date: string;
+
+  constructor(from: string, to: string, Note: string) {
+    this.from = from;
+    this.to = to;
+    this.Note = Note;
+    this.Date = new Date().toISOString(); 
+  }
+}
