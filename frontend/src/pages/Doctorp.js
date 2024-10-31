@@ -1,4 +1,4 @@
-import DoctorPage from "../components/DoctorPage";
+import DoctorForm from "../components/DoctorForm";
 
 
 export default function Doctorp(){
@@ -6,7 +6,7 @@ export default function Doctorp(){
     return(
         <>
             <div>
-                <DoctorPage />
+                <DoctorForm />
             </div>
         </>
     );

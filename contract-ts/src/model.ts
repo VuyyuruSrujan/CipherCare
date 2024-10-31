@@ -31,13 +31,13 @@
 
 export class PostedMessage {
   static schema = {
-    sender: 'string',
-    first_name: 'string',
-    last_name: 'string',
-    email: 'string',
-    dob: 'string',
-    occupation: 'string',
-    Age: 'string',
+    'sender': 'string',
+    'first_name': 'string',
+    'last_name': 'string',
+    'email': 'string',
+    'dob': 'string',
+    'occupation': 'string',
+    'Age': 'string',
   };
 
   sender: string;
@@ -61,12 +61,12 @@ export class PostedMessage {
 
 export class Doctor {
   static schema = {
-    sender: 'string',
-    doctor_first_name: 'string',
-    doctor_last_name: 'string',
-    doctor_email: 'string',
-    doctor_dob: 'string',
-    doctor_specialization: 'string',
+    'sender': 'string',
+    'doctor_first_name': 'string',
+    'doctor_last_name': 'string',
+    'doctor_email': 'string',
+    'doctor_dob': 'string',
+    'doctor_specialization': 'string',
   };
   
   sender: string;

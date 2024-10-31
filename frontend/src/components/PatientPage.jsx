@@ -3,7 +3,7 @@ import { NearContext } from "../context";
 import { GuestbookNearContract } from "../config";
 import { providers } from "near-api-js";
 import { useRouter } from 'next/router';
-
+import PatientNavbar from "./PatientNavbar";
 
 export default function PatientPage() {
   const router = useRouter();
@@ -23,10 +23,10 @@ useEffect(() => {
       console.log("Received messages:", parsed);
     } catch (error) {
       console.error("Failed to parse messages:", error);
-      return; // Exit early if parsing failed
+      return; //  Exit early if parsing failed
     }
     
-    if (Array.isArray(parsed)) { // Check if parsed is an array
+    if(Array.isArray(parsed)) { // Check if parsed is an array
       for (let i = 0; i < parsed.length; i++) {
         if (parsed[i].sender === signedAccountId) {
           const fullName = `${parsed[i].first_name} ${parsed[i].last_name}`;
@@ -87,6 +87,7 @@ useEffect(() => {
       <div>
       <button onClick={deleteAll}>delete all</button>
     </div>
+    <PatientNavbar />
     </>
   );
 }

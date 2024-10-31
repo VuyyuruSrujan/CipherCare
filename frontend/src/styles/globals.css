@@ -90,9 +90,9 @@ body {
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
+      /* rgb(var(--background-end-rgb)) */
     )
-    rgb(var(--background-start-rgb));
+    /* rgb(var(--background-start-rgb));
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -102,7 +102,7 @@ body {
     Ubuntu,
     Droid Sans,
     Helvetica Neue,
-    sans-serif;
+    sans-serif; */
 }
 
 a {
@@ -132,6 +132,7 @@ a {
   padding-bottom:50px;
   margin-right: 400px;
   margin-left: 400px;
+  /* position: absolute; */
 }
 #squareBox{
   border: 2px solid #ADEFD1FF;
@@ -296,4 +297,288 @@ button{
 }
 #Accountid{
   margin-top: 50px;
+}
+
+#DoctorDetails{
+  margin-left: 70px;
+  margin-top: 40px;
+  display: flexbox;
+  gap: 15px;
+}
+
+/*---------------------------------------------Doctor Navbar------------------------------------------------------------*/
+
+li{
+  list-style: none;
+  display:flexbox;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+ul{
+  float: right;
+  margin-top: -600px;
+  margin-right: 0px;
+  background-color: #00203FFF;
+  padding-right: 50px;
+  padding-left: 30px;
+  padding-top: 40px;
+  padding-bottom: 400px;
+  position: relative;
+  z-index: 1;
+}
+ul li button{
+  border: none;
+  background-color: #00203FFF;
+  color: white;
+
+}
+li:hover{
+  border: 2px solid wheat;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px soild wheat;
+}
+#menuimg{
+  float: right;
+  margin-top: -590px;
+  margin-right: 10px;
+  position: relative;
+  z-index: 2;
+  width: 50px;
+  
+}
+
+
+/*----------------------Nav toggle----------------------------------*/
+
+.menu.slide-in {
+  animation: slideIn 0.4s forwards;
+}
+
+.menu.slide-out {
+  animation: slideOut 0.4s forwards;
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+      transform: translateX(0);
+      opacity: 1;
+  }
+  to {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+}
+
+#SearchBar{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 3px soild black;
+  outline: none;
+  margin-left: 300px;
+  width: 600px;
+  margin-top: 40px;
+  height: 50px;
+  font-size: 30px;
+}
+
+#searchimg{
+  width: 300px;
+  height: 150px;
+  margin-top: -30px;
+  margin-bottom: -30px;
+}
+#LeftBox{
+  float: left;
+  margin-top: 80px;
+  margin-left: 70px;
+}
+#requestimg{
+  margin-top: -50px;
+  margin-bottom: -60px;
+}
+#DocNav{
+  margin-top: 500px;
+}
+#RightBox{
+  float: right;
+  margin-top: 80px;
+  margin-right: 300px;
+}
+
+/* From Uiverse.io by nikk7007 */ 
+.btn {
+  --color: #060606;
+  --color2: white;
+  /* padding: 0.8em 1.75em; */
+  background-color: transparent;
+  border-radius: 6px;
+  border: .5px solid black;
+  transition: .5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+  height: 40px;
+ }
+ 
+ .btn::after, .btn::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: .5s ease-out;
+  background-color: var(--color);
+ }
+ 
+ .btn::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .btn:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .btn:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+ }
+ 
+ .btn:hover {
+  color: var(--color2);
+ }
+ 
+ .btn:active {
+  filter: brightness(.7);
+  transform: scale(.98);
+ }
+ 
+#PatDat{
+  position: absolute;
+  margin-left: 200px;
+  margin-top: -400px;
+  border: 2px solid black;
+  padding: 50px;
+  padding-bottom: 90px;
+}
+#reqBox{
+  float: right;
+  margin-left: 350px;
+  margin-top: -150px;
+}
+#docTxt{
+  width: 400px;
+}
+#Btns{
+  margin-left: 140px;
+  position: absolute;
+  bottom: 40px;
+  left: 100px;
+}
+#DocBackbtn{
+  width: 100px;
+}
+#ProjectTitle {
+  letter-spacing: 5px;
+  text-shadow: 1px 1px black;
+  font-family: sans-serif;
+  font-size: 100px;
+  animation-duration: 2s;
+  animation-name: slideFromTop;
+  animation-fill-mode: forwards; /* Ensures the element stays in the final position */
+}
+
+/* Define the keyframes for the sliding effect */
+@keyframes slideFromTop {
+  0% {
+    transform: translateY(-100%); /* Start off-screen above the viewport */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); /* End at its normal position */
+    opacity: 1;
+  }
+}
+
+#Mainbtns{
+  display: inline-flex;
+  gap: 30px;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+#maincnnbtn{
+  background-color: wheat;
+}
+#img1{
+  float: left;
+  margin-left: -350px;
+  width: 500px;
+  margin-top: 50px;
+}
+#txt1{
+  float: right;
+  margin-right: -400px;
+  width: 700px;
+  margin-top: 50px;
+}
+#matt1{
+  line-height: 46px;
+}
+#img2{
+  width: 500px;
+  height: 300px;
+  margin-top: 360px;
+  float: right;
+  margin-right: -650px;
+}
+#txt2{
+float: left;
+margin-left: -500px;
+margin-top: 420px;
+}
+#matt2{
+  line-height: 46px;
+  width: 620px;
+}
+#img3{
+  width: 500px;
+  height: 260px;
+  float: left;
+  margin-left: -620px;
+ margin-top: 700px;
+}
+#matt3{
+  line-height: 46px;
+  margin-top: 0px;
+  margin-left: 10px;
+  width: 500px;
+}
+#txt3{
+  position: absolute;
+  top: 1000px;
+  left: 800px;
 }

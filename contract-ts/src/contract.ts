@@ -14,6 +14,7 @@ class GuestBook {
   add_message({first_name , last_name , email , dob , occupation , Age}: { first_name:string , last_name:string , email:string , dob:string , occupation:string , Age:string}) {
     const sender = near.predecessorAccountId();
 
+
     const message = new PostedMessage( sender ,first_name , last_name , email , dob , occupation , Age);
     this.messages.push(message);
     return message;
@@ -53,14 +54,43 @@ class GuestBook {
   }
 
   @view({})
-  get_doctors({ from_index = 0, limit = this.messages.length }: { from_index: number, limit: number }): Array<{ doctor_first_name: string, doctor_last_name: string, doctor_email: string, doctor_dob: string, doctor_specialization: string }> {
-    return this.doctors.toArray().slice(from_index, from_index + limit).map((doctor: Doctor) => ({
-      doctor_first_name: doctor.doctor_first_name,
-      doctor_last_name: doctor.doctor_last_name,
-      doctor_email: doctor.doctor_email,
-      doctor_dob: doctor.doctor_dob,
-      doctor_specialization: doctor.doctor_specialization
-    }));
+  get_doctors({ from_index = 0, limit = this.doctors.length }) {
+      const doctorList = this.doctors.toArray().slice(from_index, from_index + limit).map((doctor) => ({
+        sender : doctor.sender,
+        doctor_first_name: doctor.doctor_first_name,
+        doctor_last_name: doctor.doctor_last_name,
+        doctor_email: doctor.doctor_email,
+        doctor_dob: doctor.doctor_dob,
+        doctor_specialization: doctor.doctor_specialization
+      }));
+    // Debugging output
+      return doctorList;
   }
   
+
+
+  @view({})
+  get_doctor_by_sender({ senderId }: { senderId: string }): { doctor_first_name: string, doctor_last_name: string, doctor_email: string, doctor_dob: string, doctor_specialization: string } | null {
+    // Find the doctor with the matching senderId
+    const doctor = this.doctors.toArray().find((doc: Doctor) => doc.sender === senderId);
+    if (doctor) {
+      return {
+        doctor_first_name: doctor.doctor_first_name,
+        doctor_last_name: doctor.doctor_last_name,
+        doctor_email: doctor.doctor_email,
+        doctor_dob: doctor.doctor_dob,
+        doctor_specialization: doctor.doctor_specialization
+      };
+    }
+    return null;
+  }
+
+  @call({})
+  delete_all_doctors(): void {
+    this.doctors.clear();
+  }
+
+  @view({})
+  total_doctors(): number { return this.doctors.length }
+
 }

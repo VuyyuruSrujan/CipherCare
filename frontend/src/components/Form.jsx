@@ -4,7 +4,7 @@ import { GuestbookNearContract } from "../config";
 import { providers } from "near-api-js";  // Import NEAR providers
 import { useRouter } from 'next/router';
 
-export default function Form({ currentAccountId}) {
+export default function Form({ currentAccountId }) {
   const { signedAccountId, wallet } = useContext(NearContext);
   const [transactionStatus, setTransactionStatus] = useState(null);
   const router = useRouter();
@@ -41,7 +41,7 @@ export default function Form({ currentAccountId}) {
     return wallet.viewMethod({
       contractId: GuestbookNearContract,
       method: "get_messages",
-      args: { from_index: String(from_index), limit: "100" },
+      args: { from_index: String(from_index), limit: "10000" },
     });
   };
 
